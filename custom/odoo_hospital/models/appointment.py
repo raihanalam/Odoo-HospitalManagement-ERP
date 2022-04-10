@@ -29,7 +29,7 @@ class HospitalAppointment(models.Model):
     notes = fields.Text(string='Appointment Notes')
     prescription = fields.Text(string='Prescription')
     pharmacy_history = fields.Text(string='Pharmacy History')
-    appointment_date = fields.Date(string='Date', required=True)
+    appointment_date = fields.Date(string='Date')
 
     state = fields.Selection([
         ('draft', 'Draft'),

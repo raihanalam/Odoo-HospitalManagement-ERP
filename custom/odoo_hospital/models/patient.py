@@ -76,6 +76,7 @@ class HospitalPatient(models.Model):
     blood_group = fields.Char(string='Blood Group')
     notes = fields.Text(string='Notes', default= _get_default_notes)
     image = fields.Binary(string='Image')
+    active = fields.Boolean('Active', default=True)
     appointment_count = fields.Integer(string='Appointment', compute="get_appointment_count")
     #Another way to define rec name
     #name = fields.Char('Default Name')

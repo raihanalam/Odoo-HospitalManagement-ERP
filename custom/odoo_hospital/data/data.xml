@@ -5,9 +5,15 @@
         <record id="patient_xyz" model="hospital.patient">
             <field name="patient_name">Popo</field>
             <field name="patient_age">23</field>
-            <field name="gender">Male</field>
+            <field name="gender">male</field>
             <field name="blood_group">A+</field>
             <field name="notes">Fever</field>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record id="appointment_xyz" model="hospital.appointment">
+            <field name="patient_id" ref="patient_xyz"/>
+            <field name="notes">Psychological Problem</field>
         </record>
     </data>
 </odoo>
