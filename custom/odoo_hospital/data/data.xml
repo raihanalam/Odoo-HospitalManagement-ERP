@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Create Data files and load data in odoo-->
+<odoo>
+    <data noupdate="1">
+        <record id="patient_xyz" model="hospital.patient">
+            <field name="patient_name">Popo</field>
+            <field name="patient_age">23</field>
+            <field name="gender">Male</field>
+            <field name="blood_group">A+</field>
+            <field name="notes">Fever</field>
+        </record>
+    </data>
+</odoo>

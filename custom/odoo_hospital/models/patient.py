@@ -1,5 +1,13 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
+class ResPartners(models.Model):
+    _inherit = 'res.partner'
+    #Override create function in odoo
+    @api.model
+    def create(self, vals):
+        res = super(ResPartners, self).create(vals)
+        #custom coding here
+        return res
 
 class SaleOrderInherit(models.Model):
     _inherit = 'sale.order'
@@ -65,7 +73,7 @@ class HospitalPatient(models.Model):
         ('major', 'Major'),
         ('minor', 'Minor'),
     ], string='Age Group', compute='set_age_group')
-
+    blood_group = fields.Char(string='Blood Group')
     notes = fields.Text(string='Notes', default= _get_default_notes)
     image = fields.Binary(string='Image')
     appointment_count = fields.Integer(string='Appointment', compute="get_appointment_count")

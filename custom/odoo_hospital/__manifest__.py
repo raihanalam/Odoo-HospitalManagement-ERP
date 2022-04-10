@@ -15,6 +15,9 @@
         'data/sequence.xml',
         'views/appointment.xml',
         'views/patient.xml',
+        'reports/report.xml',
+        'reports/patient_card.xml',
+        'data/data.xml',
 
     ],
     'installable': True,

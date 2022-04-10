@@ -32,8 +32,10 @@
                 <field name="name_seq"/>
                 <field name="patient_name"/>
                 <field name="gender"/>
-                <field name="patient_age"/>
+                <field name="patient_age" sum="Total of Ages"/>
+<!--                for checking average just replace sum to avg-->
                 <field name="age_group"/>
+                <field name="blood_group"/>
                 <field name="notes"/>
                 <field name="image"/>
             </tree>
@@ -68,8 +70,10 @@
                         <!--<field name="name"/>-->
                         </group>
                         <group>
-                            <field name="patient_age"/>
+                            <field name="patient_age" />
                             <field name="age_group"/>
+                            <field name="blood_group"/>
+
                         </group>
                     </group>
                     <group>

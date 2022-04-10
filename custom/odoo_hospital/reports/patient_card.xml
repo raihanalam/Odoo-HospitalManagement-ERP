@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!--    <template id="report_patient_cards">-->
+<!--        <t t-call="web.html_container" >-->
+<!--            <t t-foreach="docs" t-as="doc">-->
+<!--                <h2>Patient Card</h2>-->
+<!--            </t>-->
+<!--        </t>-->
+<!--    </template>-->
+
+    <template id="report_patient">
+        <t t-call="web.html_container" >
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="oe_structure">
+                        <h2 class="text-center">Patient Card</h2>
+                        <br/>
+                        <center>
+                            <img t-if="not doc.image" t-att-src="'/odoo_hospital/static/image/patient.png'" height="120" width="120"/>
+                            <img t-if="doc.image" t-att-src="'data:image/png;base64,%s' % to_text(doc.image)" height="120" width="120"/>
+                        </center>
+                        <br/>
+                        <br/>
+
+                        <div class="row">
+                            <div class="col-6">
+                                    <div class="text-center">
+                                        ID: <t t-esc="doc.name_seq"/><br/>
+                                        Name: <t t-esc="doc.patient_name"/><br/>
+                                        Gender: <t t-esc="doc.gender"/><br/>
+                                    </div>
+                            </div>
+                            <div class="col-6">
+                                    <div class="text-center">
+                                        Age: <t t-esc="doc.patient_age"/><br/>
+                                        Patient Type: <t t-esc="doc.age_group"/><br/>
+                                        Blood Group: <t t-esc="doc.blood_group"/><br/>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

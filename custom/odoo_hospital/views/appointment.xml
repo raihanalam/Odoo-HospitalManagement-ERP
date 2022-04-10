@@ -43,6 +43,18 @@
                             <field name="notes"/>
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Prescription">
+                            <group>
+                                <field name="prescription"/>
+                            </group>
+                        </page>
+                        <page string="Pharmacy History">
+                            <group>
+                                <field name="pharmacy_history"/>
+                            </group>
+                        </page>
+                    </notebook>
 
                 </sheet>
                 <div class="oe_chatter">
