@@ -12,13 +12,16 @@
     'demo': [],
     'data': [
         'security/ir.model.access.csv',
+        'security/security.xml',
         'data/sequence.xml',
+        'wizards/create_appointment.xml',
         'views/appointment.xml',
         'views/patient.xml',
+        'views/doctor.xml',
+        'views/manager.xml',
         'reports/report.xml',
         'reports/patient_card.xml',
         'data/data.xml',
-
     ],
     'installable': True,
     'application': True,

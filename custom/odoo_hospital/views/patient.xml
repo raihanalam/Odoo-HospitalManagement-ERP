@@ -49,6 +49,9 @@
         <field name="arch" type="xml">
             <form string="Patients">
                 <sheet>
+                    <header>
+                        <button name="%(odoo_hospital.create_appointment_wizard)d" string="Create Appointment" type="action" class="oe_highlight"/>
+                    </header>
                     <div class="oe_button_box" name="button_box">
                         <button name="open_patient_appointments" type="object"  class="oe_start_button" icon="fa-calendar">
                             <field name="appointment_count" string="Appointments" widget="statinfo"/>
@@ -71,6 +74,7 @@
                         <group>
                             <field name="name_seq" readonly="1"/>
                             <field name="gender"/>
+                            <field name="doctor_id" options="{'no_create_edit': True, 'no_create': True, 'no_open':True}"/>
                         <!--<field name="name"/>-->
                         </group>
                         <group>

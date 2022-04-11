@@ -73,6 +73,8 @@ class HospitalPatient(models.Model):
         ('major', 'Major'),
         ('minor', 'Minor'),
     ], string='Age Group', compute='set_age_group')
+
+    doctor_id = fields.Many2one('hospital.doctor', string='Doctor', required=True)
     blood_group = fields.Char(string='Blood Group')
     notes = fields.Text(string='Notes', default= _get_default_notes)
     image = fields.Binary(string='Image')

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!--    Tree view for doctor model-->
+    <record id="doctor_tree" model="ir.ui.view">
+        <field name="name">hospital.doctor.tree</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <tree string="Doctors">
+                <!--  <field name="name"/>-->
+                <field name="doc_seq"/>
+                <field name="doctor_id"/>
+                <field name="gender"/>
+                <field name="speciality"/>
+            </tree>
+        </field>
+    </record>
+    <!--Form view for doctor model-->
+    <record id="doctor_form" model="ir.ui.view">
+
+        <field name="name">hospital.doctor.form</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <form string="Doctors">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="doc_seq"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="doctor_id"/>
+                            <field name="gender"/>
+                            <field name="speciality"/>
+                        </group>
+                    </group>
+
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action of the doctor menu -->
+    <record id="action_doctor" model="ir.actions.act_window">
+            <field name="name">Doctors</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hospital.doctor</field>
+            <!--Adding default filter for view-->
+            <field name="context">{}</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create Your First Doctor
+              </p>
+            </field>
+    </record>
+    <menuitem id="hospital_doctor" name="Doctors" parent="hospital_root" action="action_doctor" sequence="3"/>
+</odoo>
