@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+    <record model="ir.actions.act_window" id="action_patient_appointments">
+        <field name="name">Appointments</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="domain">[]</field>
+<!--        <field name="view_type">form</field>-->
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="odoo_hospital.appointment_tree"/>
+        <field name="binding_model_id" ref="model_hospital_patient"/>
+    </record>
 
     <record model="ir.actions.act_window" id="open_patient_appointments">
         <field name="name">Appointments</field>
@@ -72,13 +82,15 @@
                         <group>
                             <field name="name_seq" readonly="1"/>
                             <field name="gender"/>
-                            <field name="doctor_id" options="{'no_create_edit': True, 'no_create': True, 'no_open':True}"/>
-                        <!--<field name="name"/>-->
-                        </group>
-                        <group>
                             <field name="patient_age" />
                             <field name="age_group"/>
                             <field name="blood_group"/>
+                            <field name="email_id"/>
+                            <!--<field name="name"/>-->
+                        </group>
+                        <group>
+                            <field name="user_id" string="PRO"/>
+                            <field name="doctor_id" options="{'no_create_edit': True, 'no_create': True, 'no_open':True}"/>
 
                         </group>
                     </group>

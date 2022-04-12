@@ -1,17 +1,22 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
+
+
 class ResPartners(models.Model):
     _inherit = 'res.partner'
-    #Override create function in odoo
+
+    # Override create function in odoo
     @api.model
     def create(self, vals):
         res = super(ResPartners, self).create(vals)
-        #custom coding here
+        # custom coding here
         return res
+
 
 class SaleOrderInherit(models.Model):
     _inherit = 'sale.order'
     patient_name = fields.Char(string='Patient Name')
+
 
 class HospitalPatient(models.Model):
     _name = 'hospital.patient'
@@ -20,9 +25,9 @@ class HospitalPatient(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     def name_get(self):
-        res =[]
+        res = []
         for field in self:
-            res.append((field.id, '%s %s' % (field.name_seq,field.patient_name)))
+            res.append((field.id, '%s %s' % (field.name_seq, field.patient_name)))
         return res
 
     @api.constrains('patient_age')
@@ -55,7 +60,7 @@ class HospitalPatient(models.Model):
     @api.depends('patient_age')
     def set_age_group(self):
         for rec in self:
-            #if rec.patient_age:
+            # if rec.patient_age:
             if rec.patient_age < 18:
                 rec.age_group = 'minor'
             else:
@@ -82,9 +87,11 @@ class HospitalPatient(models.Model):
 
     doctor_id = fields.Many2one('hospital.doctor', string='Doctor', required=True)
     blood_group = fields.Char(string='Blood Group')
-    notes = fields.Text(string='Notes', default= _get_default_notes)
+    notes = fields.Text(string='Notes', default=_get_default_notes)
     image = fields.Binary(string='Image')
     active = fields.Boolean('Active', default=True)
     appointment_count = fields.Integer(string='Appointment', compute="get_appointment_count")
-    #Another way to define rec name
-    #name = fields.Char('Default Name')
+    email_id = fields.Char(string='Email')
+    user_id = fields.Many2one('res.users', string='PRO')
+    # Another way to define rec name
+    # name = fields.Char('Default Name')
