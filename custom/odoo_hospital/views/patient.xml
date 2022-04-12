@@ -49,9 +49,7 @@
         <field name="arch" type="xml">
             <form string="Patients">
                 <sheet>
-                    <header>
-                        <button name="%(odoo_hospital.create_appointment_wizard)d" string="Create Appointment" type="action" class="oe_highlight"/>
-                    </header>
+                    <button name="%(odoo_hospital.create_appointment_wizard)d" string="Create Appointment" type="action" class="oe_highlight" context="{'default_patient_id':active_id}"/>
                     <div class="oe_button_box" name="button_box">
                         <button name="open_patient_appointments" type="object"  class="oe_start_button" icon="fa-calendar">
                             <field name="appointment_count" string="Appointments" widget="statinfo"/>
@@ -136,4 +134,5 @@
 
     <menuitem id="hospital_root" name="Hospital" sequence="0" web_icon="odoo_hospital.static/description/icon.png"/>
     <menuitem id="hospital_patient" name="Patients" parent="hospital_root" action="action_patient"/>
+    <menuitem id="create_appointment" name="Create Appointment" parent="hospital_root" action="create_appointment_wizard"/>
 </odoo>

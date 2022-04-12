@@ -19,6 +19,12 @@ class HospitalPatient(models.Model):
     _rec_name = 'patient_name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
+    def name_get(self):
+        res =[]
+        for field in self:
+            res.append((field.id, '%s %s' % (field.name_seq,field.patient_name)))
+        return res
+
     @api.constrains('patient_age')
     def check_age(self):
         for rec in self:

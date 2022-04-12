@@ -31,6 +31,17 @@ class HospitalAppointment(models.Model):
     pharmacy_history = fields.Text(string='Pharmacy History')
     appointment_date = fields.Date(string='Date')
     appointment_lines = fields.One2many('hospital.appointment.lines', 'appointment_id', string='Appointment Lines')
+    doctor_id = fields.Many2one('hospital.doctor', string='Doctor',required=True)
+    # doctor_gender = fields.Selection([
+    #     ('male', 'Male'),
+    #     ('fe_male', 'Female'),
+    # ], default='male', string='Gender', related='doctor_id.gender')
+    #
+    # @api.onchange('doctor_id')
+    # def set_doctor_gender(self):
+    #     for rec in self:
+    #         if rec.doctor_gender:
+    #             rec.doctor_gender = rec.doctor_id.gender
 
     state = fields.Selection([
         ('draft', 'Draft'),

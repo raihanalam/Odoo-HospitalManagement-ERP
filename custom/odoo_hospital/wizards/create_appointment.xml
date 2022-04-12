@@ -7,6 +7,7 @@
             <form string="Create Appointment">
                 <group>
                     <field name="patient_id"/>
+                    <field name="doctor_id"/>
                     <field name="appointment_date"/>
                 </group>
                 <footer>
