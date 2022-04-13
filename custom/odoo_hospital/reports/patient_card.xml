@@ -38,6 +38,17 @@
                                     </div>
                             </div>
                         </div>
+                        <center>
+                            <table class="table table-bordered mb-0" style="border: 1px solid black">
+                                <tr>
+                                    <td class="text-center align-middle" style="height: 6rem">
+                                        <img alt="Barcode" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('EAN13', doc.name_seq, 600, 150)" style="width:100%;height:4rem;"/>
+                                        <span t-field="doc.name_seq"/>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </center>
                     </div>
                 </t>
             </t>

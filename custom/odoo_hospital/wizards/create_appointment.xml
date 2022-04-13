@@ -12,6 +12,7 @@
                 </group>
                 <footer>
                     <button name="create_appointment" string="Create" type="object" class="btn-primary"/>
+                    <button name="get_data" string='Get Data' type='object' class="btn-primary"/>
                     <button string="Cancel" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>

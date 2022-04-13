@@ -11,17 +11,18 @@
             <field name="body_html" type="html">
                 <div style="margin: 0px; padding: 0px;">
                     <p style="margin: 0px; padding: 0px; font-size: 13px;">
-                        Dear {{object.patient_name}}
+                        Dear <t t-out="object.patient_name"/>,
                         <br /><br />
-                        Here is your patient card with reference {{object.name_seq}}
+                        Here is your patient card with reference <t t-out="object.name_seq"/>
                         <br /><br />
-                        Age: {{object.patient_age}}<br/>
-                        Gender: {{object.gender}}<br/>
-                        Blood Group: {{object.blood_group}}<br/>
-                        Under Doctor: {{object.doctor_id}}<br/>
-                        Notes: {{object.notes}}<br/>
+                        Age: <t t-out="object.patient_age"/> <br/>
+                        Gender: <t t-out="object.gender"/> <br/>
+                        Contact: <t t-out="object.contact_no"/><br/>
+                        Blood Group: <t t-out="object.blood_group"/> <br/>
+                        Under Doctor:<t t-out="object.doctor_id"/> <br/>
+                        Notes: <t t-out="object.notes"/> <br/>
                         <br /><br />
-                        If you have any queries feel free to reply us
+                        If you have any queries feel free contact us.
                     </p>
                 </div>
             </field>

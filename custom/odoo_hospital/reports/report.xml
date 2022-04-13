@@ -2,11 +2,20 @@
 <odoo>
     <report
         id="report_patient_card"
-        string="Patient Card"
+        string="Patient Card PDF"
         model="hospital.patient"
         report_type="qweb-pdf"
         name="odoo_hospital.report_patient"
         file="odoo_hospital.report_patient"
+    />
+
+        <report
+        id="report_patient_card_xlx"
+        string="Patient Card Excel"
+        model="hospital.patient"
+        report_type="xlsx"
+        name="odoo_hospital.report_patient_xls"
+        file="odoo_hospital.report_patient_xls"
     />
     <!--menu="False"-->
 </odoo>

@@ -13,6 +13,12 @@ class HospitalAppointment(models.Model):
             vals['name'] = self.env['ir.sequence'].next_by_code('hospital.appointment.sequence') or ('New')
         result = super(HospitalAppointment, self).create(vals)
         return result
+
+    def write(self,vals):
+        res = super(HospitalAppointment, self).write(vals)
+        print('Test write function')
+        return res
+
     def action_confirm(self):
         for rec in self:
             rec.state = 'confirm'
@@ -31,7 +37,7 @@ class HospitalAppointment(models.Model):
     pharmacy_history = fields.Text(string='Pharmacy History')
     appointment_date = fields.Date(string='Date')
     appointment_lines = fields.One2many('hospital.appointment.lines', 'appointment_id', string='Appointment Lines')
-    doctor_id = fields.Many2one('hospital.doctor', string='Doctor',required=True)
+    doctor_id = fields.Many2one('hospital.doctor', string='Doctor')
     # doctor_gender = fields.Selection([
     #     ('male', 'Male'),
     #     ('fe_male', 'Female'),

@@ -16,3 +16,9 @@ class CreateAppointment(models.TransientModel):
             'appointment_date': self.appointment_date,
         }
         self.env['hospital.appointment'].create(vals)
+        self.patient_id.message_post(body='Appointment Created Successfully', subject="Appointment")
+
+    def get_data(self):
+        appointments = self.env['hospital.appointment'].search([('patient_id', '=', 6)]) #search_count is for counting data
+        for rec in appointments:
+            print('Appointment Name', rec.name)

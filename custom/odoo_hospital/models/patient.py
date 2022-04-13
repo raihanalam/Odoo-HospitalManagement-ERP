@@ -70,11 +70,26 @@ class HospitalPatient(models.Model):
         count = self.env['hospital.appointment'].search_count([('patient_id', '=', self.id)])
         self.appointment_count = count
 
+    def action_send_card(self):
+        template_id = self.env.ref('odoo_hospital.patient_card_email_template').id
+        template = self.env['mail.template'].browse(template_id)
+        template.send_mail(self.id, force_send=True)
+
     patient_name = fields.Char(string='Name', required=True, track_visibility='always')
+
     name_seq = fields.Char(string='Patient ID', required=True, copy=False, readonly=True, index=True,
                            default=lambda self: ('New'))
     patient_age = fields.Integer(string='Age', required=True, track_visibility='always')
+    patient_name_upper = fields.Char(compute='_compute_upper_name', inverse='_inverse_upper_name')
+    @api.depends('patient_name')
+    def _compute_upper_name(self):
+        for rec in self:
+            rec.patient_name_upper = rec.patient_name.upper() if rec.patient_name else False
 
+    @api.depends('patient_name')
+    def _inverse_upper_name(self):
+        for rec in self:
+            rec.patient_name = rec.patient_name_upper.lower() if rec.patient_name else False
     gender = fields.Selection([
         ('male', 'Male'),
         ('fe_male', 'Female'),
@@ -92,6 +107,7 @@ class HospitalPatient(models.Model):
     active = fields.Boolean('Active', default=True)
     appointment_count = fields.Integer(string='Appointment', compute="get_appointment_count")
     email_id = fields.Char(string='Email')
+    contact_no = fields.Char(string="Contact No.")
     user_id = fields.Many2one('res.users', string='PRO')
     # Another way to define rec name
     # name = fields.Char('Default Name')
