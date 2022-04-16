@@ -5,3 +5,4 @@ access_hospital_appointment_lines, access.hospital.appointment.lines,model_hospi
 access_hospital_doctor, access.hospital.doctor,model_hospital_doctor,,1,1,1,1
 access_hospital_manager, access.hospital.manager,model_hospital_manager,,1,1,1,1
 access_create_appointment, access.create.appointment,model_create_appointment,,1,1,1,1
+access_hospital_lab, access.hospital.lab,odoo_hospital.model_hospital_lab,odoo_hospital.group_hospital_lab,1,1,1,1

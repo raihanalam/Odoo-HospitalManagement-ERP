@@ -24,6 +24,10 @@ class HospitalPatient(models.Model):
     _rec_name = 'patient_name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
+    @api.model
+    def test_cron_job(self):
+        print('Hello')
+
     def name_get(self):
         res = []
         for field in self:
