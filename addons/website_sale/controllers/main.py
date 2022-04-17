@@ -482,7 +482,7 @@ class WebsiteSale(http.Controller):
         request.website.sale_get_order(code=promo)
         return request.redirect(redirect)
 
-    @http.route(['/shop/cart'], type='http', auth="public", website=True, sitemap=False)
+    @http.route(['/shop/cart'], type='http', auth="user", website=True, sitemap=False)
     def cart(self, access_token=None, revive='', **post):
         """
         Main cart management + abandoned cart revival

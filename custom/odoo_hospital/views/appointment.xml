@@ -12,6 +12,7 @@
                 <field name="patient_id"/>
                 <field name="patient_age"/>
                 <field name="appointment_date"/>
+
             </tree>
         </field>
     </record>
@@ -38,8 +39,9 @@
                             <field name="patient_id"/>
                             <field name="patient_age"/>
                             <field name="doctor_id"/>
-<!--                            <field name="doctor_gender"/>-->
                             <field name="appointment_date"/>
+                            <field name="partner_id"/>
+                            <field name="order_id"/>
                         </group>
                         <group>
                             <field name="notes"/>
@@ -72,8 +74,9 @@
                             </group>
                         </page>
                     </notebook>
-
+                    <button name="delete_lines" type="object" class="oe_highlight" string="Delete All Lines"/>
                 </sheet>
+
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers"/>
                     <field name="activity_ids" widget="mail_activity"/>

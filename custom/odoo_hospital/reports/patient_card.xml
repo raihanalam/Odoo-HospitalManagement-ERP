@@ -38,6 +38,22 @@
                                     </div>
                             </div>
                         </div>
+                        <br/>
+                        <br/>
+
+                        <div class="row">
+                            <table class="table table-condensed" style="border: 1px solid black !important;">
+                                <t t-foreach="appointment_list" t-as="app">
+                                    <tr>
+                                        <td><t t-esc="app['name']"/> </td>
+                                        <td><t t-esc="app['notes']"/> </td>
+                                        <td><t t-esc="app['appointment_date']"/> </td>
+                                    </tr>
+                                </t>
+                            </table>
+                        </div>
+                        <br/>
+                        <br/>
                         <center>
                             <table class="table table-bordered mb-0" style="border: 1px solid black">
                                 <tr>

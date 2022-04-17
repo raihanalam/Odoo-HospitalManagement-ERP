@@ -24,6 +24,9 @@ class HospitalPatient(models.Model):
     _rec_name = 'patient_name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
+    def print_report(self):
+        return self.env.ref('odoo_hospital.report_patient_card').with_context({'discard_logo_check': True}).report_action(self)
+
     @api.model
     def test_cron_job(self):
         print('Hello')

@@ -1,3 +1,5 @@
+import pytz
+
 from odoo import models, fields, api
 
 
@@ -55,6 +57,21 @@ class HospitalAppointment(models.Model):
         ('done', 'Done'),
         ('cancel', 'Canceled'),
     ], string='Status', readonly=True, default='draft')
+
+    def delete_lines(self):
+        for rec in self:
+            # user_tz = pytz.timezone(self.env.context.get('tz') or self.env.user.tz)
+            # date_today = pytz.utc.localize(rec.appointment_date().astimezone(user_tz))
+            rec.appointment_lines = [(5, 0, 0)]
+
+    partner_id = fields.Many2one('res.partner',string='Customer')
+    order_id = fields.Many2one('sale.order', string='Sale Order')
+
+    @api.onchange('partner_id')
+    def onchange_partner_id(self):
+        for rec in self:
+            return {'domain': {'order_id': [('partner_id', '=', rec.partner_id.id)]}}
+
 
 class HospitalAppointmentLines(models.Model):
     _name = 'hospital.appointment.lines'

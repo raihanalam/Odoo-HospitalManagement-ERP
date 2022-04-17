@@ -22,3 +22,10 @@ class CreateAppointment(models.TransientModel):
         appointments = self.env['hospital.appointment'].search([('patient_id', '=', 6)]) #search_count is for counting data
         for rec in appointments:
             print('Appointment Name', rec.name)
+        # return {
+        #     "type": "ir.actions.do_nothing"
+        # }
+
+    def delete_patient(self):
+        for rec in self:
+            rec.patient_id.unlink()

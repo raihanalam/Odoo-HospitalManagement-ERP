@@ -9,7 +9,7 @@
         file="odoo_hospital.report_patient"
     />
 
-        <report
+    <report
         id="report_patient_card_xlx"
         string="Patient Card Excel"
         model="hospital.patient"
