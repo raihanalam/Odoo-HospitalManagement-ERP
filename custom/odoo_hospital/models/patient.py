@@ -105,7 +105,7 @@ class HospitalPatient(models.Model):
     age_group = fields.Selection([
         ('major', 'Major'),
         ('minor', 'Minor'),
-    ], string='Age Group', compute='set_age_group')
+    ], string='Age Group', compute='set_age_group', store=True)
 
     doctor_id = fields.Many2one('hospital.doctor', string='Doctor', required=True)
     blood_group = fields.Char(string='Blood Group')

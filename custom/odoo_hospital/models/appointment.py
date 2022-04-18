@@ -32,7 +32,7 @@ class HospitalAppointment(models.Model):
     name = fields.Char(string='Appointment ID', required=True, copy=False, readonly=True, index=True,
                        default=lambda self: ('New'))
 
-    patient_id = fields.Many2one('hospital.patient', string='Patient', required=True)
+    patient_id = fields.Many2one('hospital.patient', string='Patient', required=True, ondelete='cascade')
     patient_age = fields.Integer(string='Age', related='patient_id.patient_age')
     notes = fields.Text(string='Appointment Notes')
     prescription = fields.Text(string='Prescription')
@@ -71,8 +71,12 @@ class HospitalAppointment(models.Model):
     def onchange_partner_id(self):
         for rec in self:
             return {'domain': {'order_id': [('partner_id', '=', rec.partner_id.id)]}}
-
-
+    @api.model
+    def default_get(self, fields):
+        res = super(HospitalAppointment, self).default_get(fields)
+        res['notes']= 'Write patients problem here.'
+        print('Working!')
+        return res
 class HospitalAppointmentLines(models.Model):
     _name = 'hospital.appointment.lines'
     _description = 'Appointmnet Lines'
