@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="patients_page" name="Hospital Patient">
+        <t t-call="website.layout">
+            <div class="container">
+                <table class="table table-border">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Blood Group</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="patients" t-as="patient">
+                            <tr>
+                                <td><t t-esc="patient.name_seq"/></td>
+                                <td><t t-esc="patient.patient_name"/></td>
+                                <td><t t-esc="patient.patient_age"/></td>
+                                <td><t t-esc="patient.gender"/></td>
+                                <td><t t-esc="patient.blood_group"/></td>
+                            </tr>
+
+                        </t>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </t>
+    </template>
+</odoo>

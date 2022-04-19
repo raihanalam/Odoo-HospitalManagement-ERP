@@ -29,3 +29,26 @@ class CreateAppointment(models.TransientModel):
     def delete_patient(self):
         for rec in self:
             rec.patient_id.unlink()
+
+    def print_report(self):
+        data = {
+            'model': 'create.appointment',
+            'form': self.read()[0]
+        }
+        # if data['form']['patient_id']:
+        #     selected_patient = data['form']['patient_id'][0]
+        #     appointments = self.env['hospital.appointment'].search([('patient_id', '=', selected_patient)])
+        # else:
+        #     appointments = self.env['hospital.appointment'].search([])
+        # appointment_list = []
+        # for app in appointments:
+        #     vals = {
+        #         'name': app.name,
+        #         'notes': app.notes,
+        #         'appointment_date': appointment_list
+        #     }
+        #     appointment_list.append(vals)
+        # data['appointments'] = appointment_list
+
+        #.with_context({'discard_logo_check': True})
+        return self.env.ref('odoo_hospital.report_appointment').report_action(self, data=data)

@@ -23,9 +23,12 @@
         'views/doctor.xml',
         'views/manager.xml',
         'views/lab.xml',
+        'views/settings.xml',
+        'views/template.xml',
         'reports/report.xml',
         'reports/patient_card.xml',
         'reports/sale_report_inherit.xml',
+        'reports/appointment.xml',
 
     ],
     'installable': True,

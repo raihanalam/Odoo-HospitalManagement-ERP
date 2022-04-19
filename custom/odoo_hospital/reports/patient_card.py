@@ -10,7 +10,7 @@ class PatientCardReport(models.AbstractModel):
 
         docs = self.env['hospital.patient'].browse(docids[0])
         appointments = self.env['hospital.appointment'].search([('patient_id', '=', docids[0])])
-        #limit=1 we can also set limit
+        # limit=1 we can also set limit
         appointment_list = []
 
         for app in appointments:
@@ -20,7 +20,7 @@ class PatientCardReport(models.AbstractModel):
                 'appointment_date': app.appointment_date
             }
             appointment_list.append(vals)
-        print(appointment_list)
+        # print(appointment_list)
         return {
             'doc_model': 'hospital.patient',
             'data': data,

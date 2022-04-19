@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <report
+        id="report_appointment"
+        string="Appointment Card PDF"
+        model="hospital.appointment"
+        report_type="qweb-pdf"
+        name="odoo_hospital.appointment_report"
+        file="odoo_hospital.appointment_report"
+    />
+    <report
         id="report_patient_card"
         string="Patient Card PDF"
         model="hospital.patient"
