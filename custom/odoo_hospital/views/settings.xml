@@ -10,12 +10,22 @@
             <xpath expr="//div[hasclass('settings')]" position="inside">
                 <div class="app_settings_block" data-string="Hospital" string="Hospital" data-key="odoo_hospital">
                     <h2>Hospital Management</h2>
-                    <div class="row mt16 o_settings_container">
-                        <div class="o_setting_left_pane">
-                            <label for="note" string="DefaultNote"/>
-                            <field name="note"/>
+                    <group>
+                        <div class="row mt16 o_settings_container">
+                            <div class="o_setting_left_pane">
+                                <label for="note" string="DefaultNote"/>
+                                <field name="note"/>
+                            </div>
                         </div>
-                    </div>
+                    </group>
+                    <group>
+                        <div class="row mt16 o_settings_container">
+                            <div class="o_setting_left_pane">
+                                <label for="module_crm" string="CRM"/>
+                                <field name="module_crm"/>
+                            </div>
+                        </div>
+                    </group>
                 </div>
             </xpath>
         </field>

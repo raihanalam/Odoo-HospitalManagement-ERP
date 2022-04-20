@@ -86,7 +86,7 @@ class HospitalPatient(models.Model):
 
     name_seq = fields.Char(string='Patient ID', required=True, copy=False, readonly=True, index=True,
                            default=lambda self: ('New'))
-    patient_age = fields.Integer(string='Age', required=True, track_visibility='always')
+    patient_age = fields.Integer(string='Age', track_visibility='always', group_operator=False)
     patient_name_upper = fields.Char(compute='_compute_upper_name', inverse='_inverse_upper_name')
     @api.depends('patient_name')
     def _compute_upper_name(self):
@@ -107,7 +107,7 @@ class HospitalPatient(models.Model):
         ('minor', 'Minor'),
     ], string='Age Group', compute='set_age_group', store=True)
 
-    doctor_id = fields.Many2one('hospital.doctor', string='Doctor', required=True)
+    doctor_id = fields.Many2one('hospital.doctor', string='Doctor')
     blood_group = fields.Char(string='Blood Group')
     notes = fields.Text(string='Notes', default=_get_default_notes)
     image = fields.Binary(string='Image')

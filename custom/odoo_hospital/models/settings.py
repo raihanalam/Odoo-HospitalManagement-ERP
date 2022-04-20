@@ -5,6 +5,7 @@ class HospitalSettings(models.TransientModel):
     _inherit = 'res.config.settings'
 
     note = fields.Char(string="", required=False, )
+    module_crm = fields.Boolean(string='CRM')
 
     def set_values(self):
         res = super(HospitalSettings, self).set_values()
