@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+
+    <record id="patient_kanban" model="ir.ui.view">
+         <field name="name">hospital.patient.kanban</field>
+          <field name="model">hospital.patient</field>
+         <field name="arch" type="xml">
+            <kanban default_group_by="doctor_id">
+               <field name="id"/>
+                <field name="image"/>
+                <field name="doctor_id"/>
+                <field name="patient_age"/>
+                <field name="email_id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_hospital_patient_kanban">
+                            <t t-if="record.image.raw_value">
+                                <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image:url('#{kanban_image('hospital.patient', 'image', record.id.raw_value)}')"/>
+                            </t>
+                            <t t-else="">
+                                <img class="o_kanban_image d-none d-md-block" alt="Avatar" t-att-src='_s + "/base/static/img/avatar.png"'/>
+                            </t>
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title"><field name="display_name"/></strong>
+                                <div class="o_kanban_tags_section"/>
+                                <ul>
+                                    <li>Age: <field name="patient_age"/> </li>
+                                    <li>Doctor: <field name="doctor_id"/> </li>
+                                    <li>Email: <field name="email_id"/> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+         </field>
+    </record>
+
     <record model="ir.actions.act_window" id="action_patient_appointments">
         <field name="name">Appointments</field>
         <field name="type">ir.actions.act_window</field>
@@ -100,7 +136,7 @@
                     <group>
                         <field name="blood_group"/>
                         <field name="notes"/>
-                        <field name="image"/>
+<!--                        <field name="image"/>-->
                     </group>
                 </sheet>
                 <div class="oe_chatter">
@@ -140,7 +176,7 @@
             <field name="res_model">hospital.patient</field>
             <!--Adding default filter for view-->
             <field name="context">{"search_default_male":1}</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">kanban,tree,form</field>
             <field name="help" type="html">
               <p class="o_view_nocontent_smiling_face">
                 Create Patient

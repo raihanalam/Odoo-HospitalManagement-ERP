@@ -15,7 +15,8 @@ class HospitalDoctor(models.Model):
         return result
 
     doc_seq = fields.Char(string='Doctor Sequence', required=True, copy=False, readonly=True, index=True, default=lambda self: ('New'))
-    doctor_id = fields.Many2one('res.users', string='Doctor', required=True)
+    # doctor_id = fields.Many2one('res.users', string='Doctor', required=True)
+    doctor_id = fields.Char(string='Doctor Name')
     speciality = fields.Text('Speciality')
     gender = fields.Selection([
         ('male', 'Male'),

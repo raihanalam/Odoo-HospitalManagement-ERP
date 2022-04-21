@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-
+    <record model="ir.ui.view" id="appointment_calendar">
+            <field name="name">hospital.appointment.calendar</field>
+            <field name="model">hospital.appointment</field>
+            <field name="arch" type="xml">
+                <calendar string="Appointment Calendar" date_start="appointment_date" color="patient_id" mode="month" quick_add="False">
+                    <field name="name"/>
+                    <field name="patient_id"/>
+                </calendar>
+            </field>
+        </record>
     <!--    Tree view for appointment model-->
     <record id="appointment_tree" model="ir.ui.view">
         <field name="name">hospital.appointment.tree</field>
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
-            <tree string="Patients">
-                <!--  <field name="name"/>-->
+            <tree string="Patients" decoration-info="state == 'draft'" decoration-warning="state == 'confirm'"
+                  decoration-success="state == 'done'" decoration-muted="state == 'cancel'">
+                 <!--  <field name="name"/>-->
                 <field name="name"/>
                 <field name="patient_id"/>
                 <field name="patient_age"/>
                 <field name="appointment_date"/>
-
+                <field name="state" invisible="1"/>
             </tree>
         </field>
     </record>
@@ -93,7 +103,7 @@
             <field name="res_model">hospital.appointment</field>
             <!--Adding default filter for view-->
             <field name="context">{}</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,calendar,form</field>
             <field name="help" type="html">
               <p class="o_view_nocontent_smiling_face">
                 Create Your First Appointment

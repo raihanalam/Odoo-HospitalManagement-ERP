@@ -51,4 +51,4 @@ class CreateAppointment(models.TransientModel):
         # data['appointments'] = appointment_list
 
         #.with_context({'discard_logo_check': True})
-        return self.env.ref('odoo_hospital.report_appointment').report_action(self, data=data)
+        return self.env.ref('odoo_hospital.report_appointment').with_context(landscape=True).report_action(self, data= data)

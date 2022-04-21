@@ -15,4 +15,9 @@
     <record id="sale.action_orders" model="ir.actions.act_window">
         <field name="name">Appointment</field>
     </record>
+    <record id="sale.menu_sale_quotations" model="ir.ui.menu">
+        <field name="name">New Quotations</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="sale.menu_sale_order" name="New Orders" action="sale.action_orders" parent="sale.sale_order_menu" sequence="2" groups="sales_team.group_sale_salesman"/>
 </odoo>

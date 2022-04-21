@@ -5,6 +5,7 @@ from odoo.exceptions import ValidationError
 class ResPartners(models.Model):
     _inherit = 'res.partner'
 
+    company_type = fields.Selection(selection_add=[('odoo', 'Hospital')])
     # Override create function in odoo
     @api.model
     def create(self, vals):

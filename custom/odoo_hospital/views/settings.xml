@@ -23,6 +23,16 @@
                             <div class="o_setting_left_pane">
                                 <label for="module_crm" string="CRM"/>
                                 <field name="module_crm"/>
+
+                            </div>
+                        </div>
+                    </group>
+                    <group>
+                        <div class="row mt16 o_settings_container">
+                            <div class="o_setting_left_pane">
+                                <label for="product_ids" string="Product ID's"/>
+                                <field name="product_ids"/>
+
                             </div>
                         </div>
                     </group>
