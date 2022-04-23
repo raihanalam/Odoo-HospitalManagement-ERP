@@ -8,7 +8,7 @@
     'author': 'Raihan Alam',
     'maintainer': 'Raihan',
     'website': 'emargenhospital.com',
-    'depends': ['account', 'sale'],
+    'depends': ['account', 'sale', 'mail', 'report_xlsx', 'board'],
     'demo': [],
     'data': [
         'security/ir.model.access.csv',
@@ -24,13 +24,13 @@
         'views/manager.xml',
         'views/lab.xml',
         'views/settings.xml',
+        'views/dashboard.xml',
         'views/template.xml',
         'views/sale_order.xml',
         'reports/report.xml',
         'reports/patient_card.xml',
         'reports/sale_report_inherit.xml',
         'reports/appointment.xml',
-
     ],
     'installable': True,
     'application': True,

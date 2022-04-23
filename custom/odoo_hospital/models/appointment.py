@@ -21,6 +21,10 @@ class HospitalAppointment(models.Model):
         print('Test write function')
         return res
 
+    def action_cancel(self):
+        for rec in self:
+            rec.state = 'cancel'
+
     def action_confirm(self):
         for rec in self:
             rec.state = 'confirm'
@@ -35,6 +39,7 @@ class HospitalAppointment(models.Model):
     patient_id = fields.Many2one('hospital.patient', string='Patient', required=True, ondelete='cascade')
     patient_age = fields.Integer(string='Age', related='patient_id.patient_age')
     notes = fields.Text(string='Appointment Notes')
+    amount = fields.Float(string='Paid Amount')
     prescription = fields.Text(string='Prescription')
     pharmacy_history = fields.Text(string='Pharmacy History')
     appointment_date = fields.Date(string='Date')

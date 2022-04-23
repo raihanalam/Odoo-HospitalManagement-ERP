@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+    <!--Graph View-->
+    <record id="appointment_graph" model="ir.ui.view">
+            <field name="name">hospital.appointment.graph</field>
+            <field name="model">hospital.appointment</field>
+            <field name="arch" type="xml">
+                <graph string="Appointment Graph Statistics" type="pie">
+                    <field name="amount" type="measure"/>
+                    <field name="patient_id"/>
+                </graph>
+            </field>
+    </record>
+    <!--Pivot View-->
+    <record id="appointment_pivot" model="ir.ui.view">
+            <field name="name">hospital.appointment.pivot</field>
+            <field name="model">hospital.appointment</field>
+            <field name="arch" type="xml">
+                <pivot string="Appointment Pivot">
+                    <field name="doctor_id" type="row"/>
+                    <field name="appointment_date" type="col" interval="day"/>
+                </pivot>
+            </field>
+    </record>
+
+    <!-- Calendar View-->
     <record model="ir.ui.view" id="appointment_calendar">
             <field name="name">hospital.appointment.calendar</field>
             <field name="model">hospital.appointment</field>
@@ -34,6 +58,7 @@
         <field name="arch" type="xml">
             <form string="Patients">
                 <header>
+                    <button name="action_cancel" type="object" states="draft" string="Cancel" class="oe_highlight"/>
                     <button name="action_confirm" type="object" states="draft" string="Confirm" class="oe_highlight"/>
                     <button name="action_done" type="object" states="confirm" string="Done" class="oe_highlight"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
@@ -55,6 +80,7 @@
                         </group>
                         <group>
                             <field name="notes"/>
+                            <field name="amount"/>
                         </group>
                     </group>
                     <notebook>
@@ -103,7 +129,7 @@
             <field name="res_model">hospital.appointment</field>
             <!--Adding default filter for view-->
             <field name="context">{}</field>
-            <field name="view_mode">tree,calendar,form</field>
+            <field name="view_mode">tree,form,calendar,pivot,graph</field>
             <field name="help" type="html">
               <p class="o_view_nocontent_smiling_face">
                 Create Your First Appointment
