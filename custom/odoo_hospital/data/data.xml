@@ -25,4 +25,5 @@
             <field name="notes">Psychological Problem</field>
         </record>
     </data>
+    <delete id="odoo_hospital.appointment_xyz" model="hospital.appointment"/>
 </odoo>

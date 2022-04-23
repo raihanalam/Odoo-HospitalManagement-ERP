@@ -122,6 +122,7 @@
                             <field name="name_seq" readonly="1"/>
                             <field name="gender"/>
                             <field name="patient_age" />
+                            <field name="patient_age2" widget="float_toggle" options='{"range": [0,1,2,3,4,5,6,7,8,9,10]}'/>
                             <field name="age_group"/>
                             <field name="contact_no" />
                             <field name="email_id"/>
