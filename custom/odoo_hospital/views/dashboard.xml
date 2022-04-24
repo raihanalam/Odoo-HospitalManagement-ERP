@@ -6,7 +6,7 @@
         <field name="view_mode">graph</field>
         <field name="view_id" ref="odoo_hospital.appointment_graph"/>
     </record>
-    <record id="act_book_appointments" model="ir.actions.act_window">
+    <record id="act_book_appointment" model="ir.actions.act_window">
         <field name="name">Book Appointments</field>
         <field name="res_model">hospital.appointment</field>
         <field name="view_mode">calendar</field>
@@ -36,7 +36,7 @@
         </field>
     </record>
     <record id="hospital_dashboard" model="ir.actions.act_window">
-        <field name="Dashboard">Dashboard</field>
+        <field name="name">Dashboard</field>
         <field name="res_model">board.board</field>
         <field name="view_mode">form</field>
         <field name="usage">menu</field>
@@ -49,5 +49,5 @@
             name="Dashboard"
             parent="odoo_hospital.hospital_root"
             action="hospital_dashboard"
-            sequence="1"/>
+            sequence="0"/>
 </odoo>

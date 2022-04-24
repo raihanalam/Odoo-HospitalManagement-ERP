@@ -1380,7 +1380,7 @@ class DataSet(http.Controller):
 class View(http.Controller):
 
     @http.route('/web/view/edit_custom', type='json', auth="user")
-    def edit_custom(self, custom_id, arch):
+    def edit_custom(self, custom_id, arch, view_id):
         """
         Edit a custom view
 
@@ -1388,7 +1388,10 @@ class View(http.Controller):
         :param str arch: the edited arch of the custom view
         :returns: dict with acknowledged operation (result set to True)
         """
-        custom_view = request.env['ir.ui.view.custom'].browse(custom_id)
+        if custom_id:
+            custom_view = request.env['ir.ui.view.custom'].browse(custom_id)
+        else:
+            custom_view = request.env['ir.ui.view'].browse(view_id)
         custom_view.write({ 'arch': arch })
         return {'result': True}
 
