@@ -28,6 +28,13 @@ class HospitalAppointment(models.Model):
     def action_confirm(self):
         for rec in self:
             rec.state = 'confirm'
+            return {
+                'effect': {
+                    'fadeout': 'slow',
+                    'message': 'Appointment Confirmed',
+                    'type': 'rainbow_man',
+                }
+            }
 
     def action_done(self):
         for rec in self:
@@ -40,6 +47,7 @@ class HospitalAppointment(models.Model):
     patient_age = fields.Integer(string='Age', related='patient_id.patient_age')
     notes = fields.Text(string='Appointment Notes')
     amount = fields.Float(string='Paid Amount')
+    ref = fields.Char(string='Reference', help='Reference from patient record')
     prescription = fields.Text(string='Prescription')
     pharmacy_history = fields.Text(string='Pharmacy History')
     appointment_date = fields.Date(string='Date')

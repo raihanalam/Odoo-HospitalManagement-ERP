@@ -31,6 +31,7 @@
                             </div>
                         </div>
                     </t>
+
                 </templates>
             </kanban>
          </field>
@@ -166,6 +167,9 @@
                     <field string="Gender" name="gender" context="{'group_by':'gender'}"/>
 
                 </group>
+                <searchpanel>
+                    <field name="doctor_id" enable_counters="1" icon="fa-users" select="multi"/>
+                </searchpanel>
             </search>
         </field>
     </record>

@@ -33,7 +33,27 @@
                     <field name="patient_id"/>
                 </calendar>
             </field>
-        </record>
+    </record>
+    <!--Activity View-->
+    <record id="appointment_activity" model="ir.ui.view">
+        <field name="name">hospital.appointment.activity</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <activity string="Appointments">
+                <field name="patient_id"/>
+                <field name="ref"/>
+                <templates>
+                    <div t-name="activity-box">
+                        <img t-att-src="activity_image('hospital.patient', 'image', record.patient_id.raw_value)" t-att-title="record.patient_id.value" t-att-alt="record.patient_id.value"/>
+                        <div>
+                            <field name="ref"/>
+                        </div>
+                    </div>
+                </templates>
+            </activity>
+        </field>
+    </record>
+
     <!--    Tree view for appointment model-->
     <record id="appointment_tree" model="ir.ui.view">
         <field name="name">hospital.appointment.tree</field>
@@ -46,7 +66,11 @@
                 <field name="patient_id"/>
                 <field name="patient_age"/>
                 <field name="appointment_date"/>
-                <field name="state" invisible="1"/>
+                <field name="state"
+                       decoration-success="state == 'done'"
+                       decoration-info="state == 'draft'"
+                       decoration-danger="state == 'cancel'"
+                       decoration-warning="state == 'confirm'" widget="badge"/>
             </tree>
         </field>
     </record>
@@ -129,7 +153,7 @@
             <field name="res_model">hospital.appointment</field>
             <!--Adding default filter for view-->
             <field name="context">{}</field>
-            <field name="view_mode">tree,form,calendar,pivot,graph</field>
+            <field name="view_mode">tree,form,calendar,pivot,graph,activity</field>
             <field name="help" type="html">
               <p class="o_view_nocontent_smiling_face">
                 Create Your First Appointment
