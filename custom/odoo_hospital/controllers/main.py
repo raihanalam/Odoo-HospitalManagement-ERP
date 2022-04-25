@@ -1,6 +1,21 @@
 from odoo import http
 from odoo.http import request
 from odoo.addons.website_sale.controllers.main import WebsiteSale
+class AppointmentController(http.Controller):
+    @http.route('/odoo_hospital/appointments', auth='user', type='json')
+    def appointment_banner(self):
+        return {
+            'html': """<div style="padding:50px;">
+                        <link>
+                        <center><h3>
+                        <font color="red">
+                        Hello I'm Raihan Alam and I'm learning Odoo ERP Software Development</font>
+                        </h3></center>
+                        </div>"""
+
+        }
+
+
 
 class WebsiteSaleInherit(WebsiteSale):
     @http.route([

@@ -32,6 +32,7 @@
                         <group>
                             <field name="doctor_id"/>
                             <field name="gender"/>
+                             <field name="user_id"/>
                             <field name="speciality"/>
                         </group>
                     </group>

@@ -59,7 +59,7 @@
         <field name="name">hospital.appointment.tree</field>
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
-            <tree string="Patients" decoration-info="state == 'draft'" decoration-warning="state == 'confirm'"
+            <tree string="Patients" banner_route="/odoo_hospital/appointments" decoration-info="state == 'draft'" decoration-warning="state == 'confirm'"
                   decoration-success="state == 'done'" decoration-muted="state == 'cancel'">
                  <!--  <field name="name"/>-->
                 <field name="name"/>
@@ -82,6 +82,7 @@
         <field name="arch" type="xml">
             <form string="Patients">
                 <header>
+                    <!--<button name="action_notify" type="object" string="Notify"/>-->
                     <button name="action_cancel" type="object" states="draft" string="Cancel" class="oe_highlight"/>
                     <button name="action_confirm" type="object" states="draft" string="Confirm" class="oe_highlight"/>
                     <button name="action_done" type="object" states="confirm" string="Done" class="oe_highlight"/>

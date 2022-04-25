@@ -16,10 +16,14 @@ class HospitalAppointment(models.Model):
         result = super(HospitalAppointment, self).create(vals)
         return result
 
-    def write(self,vals):
+    def write(self, vals):
         res = super(HospitalAppointment, self).write(vals)
         print('Test write function')
         return res
+
+    # def action_notify(self):
+    #     for rec in self:
+    #         rec.doctor_id.user_id.notify_success(message='Appointment confirmed!')
 
     def action_cancel(self):
         for rec in self:
