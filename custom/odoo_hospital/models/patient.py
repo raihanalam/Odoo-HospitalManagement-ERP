@@ -18,6 +18,11 @@ class SaleOrderInherit(models.Model):
     _inherit = 'sale.order'
     patient_name = fields.Char(string='Patient Name')
 
+    def action_confirm(self):
+        res = super(SaleOrderInherit, self).action_confirm()
+        print("Hello odoo")
+        return res
+
 
 class HospitalPatient(models.Model):
     _name = 'hospital.patient'
@@ -25,9 +30,29 @@ class HospitalPatient(models.Model):
     _rec_name = 'patient_name'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
+    def print_report_excel(self):
+        return self.env.ref('odoo_hospital.report_patient_card_xlx').report_action(self)
+
     def print_report(self):
         return self.env.ref('odoo_hospital.report_patient_card').with_context({'discard_logo_check': True}).report_action(self)
+    #Odoo ORM
+    def test_recordset(self):
+        partners = self.env['res.partner'].search([])
+        print('Mapped Partners', partners.mapped('email'))
+        print('Sorted partners', partners.sorted(lambda o: o.write_date, reverse=True))
+        print('Filtered partners', partners.filtered(lambda o: o.parent_id))
 
+    def action_patients(self):
+        print('Hello action patients working!')
+        return {
+            'name': ('Patient Server Action'),
+            'domain': [],
+            'view_type': 'form',
+            'res_model': 'hospital.patient',
+            'view_id': False,
+            'view_mode': 'tree,form',
+            'type': 'ir.actions.act_window',
+        }
     @api.model
     def test_cron_job(self):
         print('Hello')

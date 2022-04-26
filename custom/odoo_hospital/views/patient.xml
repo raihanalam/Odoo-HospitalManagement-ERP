@@ -98,7 +98,9 @@
                 <sheet>
                     <button name="%(odoo_hospital.create_appointment_wizard)d" string="Create Appointment" type="action" class="oe_highlight" context="{'default_patient_id':active_id}"/>
                     <button name="print_report" type="object" string="Print Report" class="oe_highlight ml-3"/>
+                    <button name="print_report_excel" type="object" string="Print Excel Report" class="oe_highlight ml-3"/>
                     <button name="action_send_card" type="object" string="Send Email" class="oe_highlight ml-3" groups="odoo_hospital.group_hospital_manager"/>
+                    <button name="test_recordset" type="object" string="Test Recordset" class="oe_highlight ml-3"/>
                     <div class="oe_button_box" name="button_box">
                         <button name="open_patient_appointments" type="object"  class="oe_start_button" icon="fa-calendar">
                             <field name="appointment_count" string="Appointments" widget="statinfo"/>

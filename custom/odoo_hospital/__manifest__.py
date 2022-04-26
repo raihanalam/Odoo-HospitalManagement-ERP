@@ -27,6 +27,7 @@
         'views/dashboard.xml',
         'views/template.xml',
         'views/sale_order.xml',
+        'views/server_action.xml',
         'reports/report.xml',
         'reports/patient_card.xml',
         'reports/sale_report_inherit.xml',
