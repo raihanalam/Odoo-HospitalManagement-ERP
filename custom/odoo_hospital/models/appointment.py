@@ -74,6 +74,19 @@ class HospitalAppointment(models.Model):
         ('done', 'Done'),
         ('cancel', 'Canceled'),
     ], string='Status', readonly=True, default='draft')
+    product_id = fields.Many2many('product.template', string='Product Template')
+
+    @api.onchange('product_id')
+    def _onchange_product_id(self):
+        for rec in self:
+            lines = [(5, 0, 0)]
+            for line in self.product_id.product_variant_ids:
+                val = {
+                    'product_id': line.id,
+                    'product_qty': 10
+                }
+                lines.append((0, 0, val))
+            rec.appointment_lines = lines
 
     def delete_lines(self):
         for rec in self:
