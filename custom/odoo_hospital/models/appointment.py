@@ -79,7 +79,8 @@ class HospitalAppointment(models.Model):
     @api.onchange('product_id')
     def _onchange_product_id(self):
         for rec in self:
-            lines = [(5, 0, 0)]
+            #lines = [(5, 0, 0)]
+            lines = []
             for line in self.product_id.product_variant_ids:
                 val = {
                     'product_id': line.id,
@@ -104,9 +105,25 @@ class HospitalAppointment(models.Model):
     @api.model
     def default_get(self, fields):
         res = super(HospitalAppointment, self).default_get(fields)
-        res['notes']= 'Write patients problem here.'
-        print('Working!')
+        #res['notes']= 'Write patients problem here.'
+        appointment_lines = []
+        product_rec = self.env['product.product'].search([])
+
+        for pro in product_rec:
+            line = (0, 0, {
+                'product_id': pro.id,
+                'product_qty': 1,
+            })
+            appointment_lines.append(line)
+        res.update(
+            {
+                'appointment_lines': appointment_lines,
+                'patient_id': 1,
+                'notes': 'This is test notes!'
+            }
+        )
         return res
+
 class HospitalAppointmentLines(models.Model):
     _name = 'hospital.appointment.lines'
     _description = 'Appointmnet Lines'
