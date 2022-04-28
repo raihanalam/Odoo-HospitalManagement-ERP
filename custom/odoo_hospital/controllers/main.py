@@ -12,10 +12,7 @@ class AppointmentController(http.Controller):
                         Hello I'm Raihan Alam and I'm learning Odoo ERP Software Development</font>
                         </h3></center>
                         </div>"""
-
         }
-
-
 
 class WebsiteSaleInherit(WebsiteSale):
     @http.route([
@@ -30,13 +27,26 @@ class WebsiteSaleInherit(WebsiteSale):
         return res
 
 class Hospital(http.Controller):
+    @http.route('/patient_webform', type='http', auth='public', website=True)
+    def patient_webform(self, **kwargs):
+        return http.request.render('odoo_hospital.create_patient', {})
+
+    @http.route('/create/webpatient', type='http', auth='public', website=True)
+    def create_webpatient(self, **kwargs):
+        request.env['hospital.patient'].sudo().create(kwargs)
+        doc = {
+            'doctor_id': kwargs.get('patient_name')
+        }
+        request.env['hospital.doctor'].sudo().create(doc)
+        return http.request.render('odoo_hospital.patient_thanks', {})
+
     @http.route('/hospital/patient/', website=True, auth='public')
-    def hospital_patient(selfself, **kw):
+    def hospital_patient(self, **kw):
         patients = request.env['hospital.patient'].sudo().search([])
         return request.render("odoo_hospital.patients_page", {'patients': patients})
 
-    @http.route('/create_patient', type='json',auth='user')
-    def create_patient(self,**rec):
+    @http.route('/create_patient', type='json', auth='user')
+    def create_patient(self, **rec):
         if request.jsonrequest:
             if rec['name']:
                 vals = {
