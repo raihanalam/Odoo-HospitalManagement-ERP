@@ -135,6 +135,7 @@ class HospitalPatient(models.Model):
     ], string='Age Group', compute='set_age_group', store=True)
 
     doctor_id = fields.Many2one('hospital.doctor', string='Doctor')
+    doctor_ids = fields.Many2many('hospital.doctor', string='Visitor Doctors list')
     blood_group = fields.Char(string='Blood Group')
     notes = fields.Text(string='Notes', default=_get_default_notes)
     image = fields.Binary(string='Image')

@@ -135,6 +135,7 @@
                             <field name="user_id" string="PRO"/>
                             <field name="doctor_id" attrs="{'invisible': [('gender','=', 'male')]}"
                                    options="{'no_create_edit': True, 'no_create': True, 'no_open':True}"/>
+                            <field name="doctor_ids" widget="many2many_tags"/>
 
                         </group>
                     </group>

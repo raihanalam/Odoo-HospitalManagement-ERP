@@ -23,3 +23,5 @@ class HospitalDoctor(models.Model):
         ('male', 'Male'),
         ('fe_male', 'Female'),
     ], default='male', string='Gender')
+    # appointment_ids = fields.Many2many('hospital.appointments', 'hospital_patient_rel', 'doctor_id_rec',
+    #                                    'appointment_id', string='Appointments')
