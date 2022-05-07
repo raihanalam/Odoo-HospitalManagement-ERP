@@ -17,7 +17,7 @@ class ResPartners(models.Model):
 class SaleOrderInherit(models.Model):
     _inherit = 'sale.order'
     patient_name = fields.Char(string='Patient Name')
-
+    is_patient = fields.Boolean(string='Is Patient')
     def action_confirm(self):
         res = super(SaleOrderInherit, self).action_confirm()
         print("Hello odoo")
@@ -62,6 +62,13 @@ class HospitalPatient(models.Model):
         for field in self:
             res.append((field.id, '%s %s' % (field.name_seq, field.patient_name)))
         return res
+
+    @api.model
+    def name_search(self, name='', args=None, operator='ilike', limit=100):
+        if args is None:
+            args = []
+        domain = args + ['|', ('name_seq', operator, name), ('patient_name', operator, name)]
+        return super(HospitalPatient, self).search(domain, limit=limit).name_get()
 
     @api.constrains('patient_age')
     def check_age(self):
@@ -135,6 +142,17 @@ class HospitalPatient(models.Model):
     ], string='Age Group', compute='set_age_group', store=True)
 
     doctor_id = fields.Many2one('hospital.doctor', string='Doctor')
+    doctor_gender = fields.Selection([
+        ('male', 'Male'),
+        ('fe_male', 'Female'),
+    ], default='male', string='Doctor Gender')
+
+    @api.onchange('doctor_id')
+    def set_doctor_gender(self):
+        for rec in self:
+            if rec.doctor_id:
+                rec.doctor_gender = rec.doctor_id.gender
+
     doctor_ids = fields.Many2many('hospital.doctor', string='Visitor Doctors list')
     blood_group = fields.Char(string='Blood Group')
     notes = fields.Text(string='Notes', default=_get_default_notes)
@@ -144,5 +162,4 @@ class HospitalPatient(models.Model):
     email_id = fields.Char(string='Email')
     contact_no = fields.Char(string="Contact No.")
     user_id = fields.Many2one('res.users', string='PRO')
-    # Another way to define rec name
-    # name = fields.Char('Default Name')
+    company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.user.company_id)

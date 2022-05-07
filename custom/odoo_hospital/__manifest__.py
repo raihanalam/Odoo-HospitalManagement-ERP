@@ -29,6 +29,7 @@
         'views/sale_order.xml',
         'views/server_action.xml',
         'views/website_form.xml',
+        'views/partner_view.xml',
         'reports/report.xml',
         'reports/patient_card.xml',
         'reports/sale_report_inherit.xml',

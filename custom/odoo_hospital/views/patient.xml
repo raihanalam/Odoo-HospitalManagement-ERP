@@ -80,11 +80,12 @@
                 <field name="patient_name"/>
                 <field name="gender"/>
                 <field name="patient_age" sum="Total of Ages"/>
-<!--                for checking average just replace sum to avg-->
+                <!--for checking average just replace sum to avg-->
                 <field name="age_group"/>
                 <field name="blood_group"/>
                 <field name="notes"/>
                 <field name="image"/>
+                <field name="doctor_id" widget="many2onebutton"/>
             </tree>
         </field>
     </record>
@@ -129,14 +130,14 @@
                             <field name="age_group"/>
                             <field name="contact_no" />
                             <field name="email_id"/>
-                            <!--<field name="name"/>-->
+                            <field name="company_id" groups="base.group_multi_company"/>
                         </group>
                         <group>
                             <field name="user_id" string="PRO"/>
                             <field name="doctor_id" attrs="{'invisible': [('gender','=', 'male')]}"
                                    options="{'no_create_edit': True, 'no_create': True, 'no_open':True}"/>
+                            <field name="doctor_gender" readonly="1" force_save="1"/>
                             <field name="doctor_ids" widget="many2many_tags"/>
-
                         </group>
                     </group>
                     <group>
