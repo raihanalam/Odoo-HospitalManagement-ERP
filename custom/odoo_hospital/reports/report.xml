@@ -16,6 +16,14 @@
         name="odoo_hospital.report_patient"
         file="odoo_hospital.report_patient"
     />
+    <report
+        id="report_patient_card_image"
+        string="Patient Card (Image)"
+        model="hospital.patient"
+        report_type="qweb-pdf"
+        name="odoo_hospital.report_patient_image"
+        file="odoo_hospital.report_patient_image"
+    />
 
     <report
         id="report_patient_card_xlx"
