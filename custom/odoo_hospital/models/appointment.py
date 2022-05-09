@@ -57,6 +57,7 @@ class HospitalAppointment(models.Model):
     appointment_date = fields.Date(string='Date')
     appointment_lines = fields.One2many('hospital.appointment.lines', 'appointment_id', string='Appointment Lines')
     doctor_id = fields.Many2one('hospital.doctor', string='Doctor')
+    model_viewer = fields.Binary(string='Model Viewer')
     # doctor_gender = fields.Selection([
     #     ('male', 'Male'),
     #     ('fe_male', 'Female'),

@@ -70,8 +70,8 @@
             </t>
         </t>
     </template>
-    <template id="report_patient_image" inherit_id="report_patient" primary="true">
-        <xpath expr="//div[@class='row[1]']" position="replace">
+    <template id="report_patient_image" inherit_id="report_patient" primary="True">
+        <xpath expr="//table/tr/td" position="replace">
 
         </xpath>
     </template>

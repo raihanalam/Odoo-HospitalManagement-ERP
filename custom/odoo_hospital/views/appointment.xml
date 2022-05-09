@@ -136,6 +136,11 @@
                                 <field name="pharmacy_history"/>
                             </group>
                         </page>
+                        <page string="Model Viewer">
+                            <group>
+                                <field name="model_viewer" widget="model_viewer" style="height:400px;width:400px;"/>
+                            </group>
+                        </page>
                     </notebook>
                     <button name="delete_lines" type="object" class="oe_highlight" string="Delete All Lines"/>
                 </sheet>
