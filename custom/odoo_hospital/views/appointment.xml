@@ -96,13 +96,14 @@
                     </div>
                     <group>
                         <group>
-                            <field name="patient_id"/>
+                            <field name="patient_id" context="{'active_test': False}"/>
                             <field name="patient_age"/>
                             <field name="doctor_id"/>
                             <field name="appointment_date" options='{"datepicker": {"daysOfWeekDisabled": [5, 6]}}'/>
                             <field name="partner_id"/>
+                            <field name="order_id" domain="order_id_domain"/>
+                            <field name="order_id_domain" invisible="1"/>
                             <field name="product_id"/>
-                            <field name="order_id"/>
                         </group>
                         <group>
                             <field name="notes"/>

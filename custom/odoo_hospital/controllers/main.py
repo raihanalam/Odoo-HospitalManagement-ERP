@@ -23,7 +23,7 @@ class WebsiteSaleInherit(WebsiteSale):
     ], type='http', auth="public", website=True)
     def shop(self, page=0, category=None, search='', min_price=0.0, max_price=0.0, ppg=False, **post):
         res = super(WebsiteSaleInherit, self).shop(page=0, category=None, search='', min_price=0.0, max_price=0.0, ppg=False, **post)
-        print("Inherited odoo dev",res)
+        print("Inherited odoo dev", res.qcontext.update({'search': 'hello odoo'}))
         return res
 
 class Hospital(http.Controller):

@@ -8,7 +8,7 @@
     'author': 'Raihan Alam',
     'maintainer': 'Raihan',
     'website': 'emargenhospital.com',
-    'depends': ['account', 'sale', 'mail', 'report_xlsx', 'board'],
+    'depends': ['account', 'sale', 'mail', 'report_xlsx', 'board', 'web_domain_field'],
     'demo': [],
     'data': [
         'security/ir.model.access.csv',

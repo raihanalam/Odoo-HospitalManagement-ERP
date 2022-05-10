@@ -1,4 +1,4 @@
-import pytz
+import json
 
 from odoo import models, fields, api
 
@@ -96,13 +96,21 @@ class HospitalAppointment(models.Model):
             # date_today = pytz.utc.localize(rec.appointment_date().astimezone(user_tz))
             rec.appointment_lines = [(5, 0, 0)]
 
+    # @api.onchange('partner_id')
+    # def onchange_partner_id(self):
+    #     for rec in self:
+    #         return {'domain': {'order_id': [('partner_id', '=', rec.partner_id.id)]}}
+
     partner_id = fields.Many2one('res.partner',string='Customer')
     order_id = fields.Many2one('sale.order', string='Sale Order')
+    order_id_domain = fields.Char(compute="_compute_order_id_domain", readonly=True, store=False)
 
-    @api.onchange('partner_id')
-    def onchange_partner_id(self):
+    @api.depends('partner_id')
+    def _compute_order_id_domain(self):
         for rec in self:
-            return {'domain': {'order_id': [('partner_id', '=', rec.partner_id.id)]}}
+            rec.order_id_domain = json.dumps([('partner_id', 'like', rec.partner_id.id)])
+
+
     @api.model
     def default_get(self, fields):
         res = super(HospitalAppointment, self).default_get(fields)
@@ -133,3 +141,4 @@ class HospitalAppointmentLines(models.Model):
     sequence = fields.Integer(string="Sequence")
     product_qty = fields.Integer(string='Quantity')
     appointment_id = fields.Many2one('hospital.appointment', string='Appointment ID')
+
